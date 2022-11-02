@@ -4,3 +4,4 @@
 ?>
  <h1><?php echo $name ?></h1>
  <p><?php echo $email ?></p>
+ <h3><?php echo $name ?></h3>
