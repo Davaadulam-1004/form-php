@@ -39,27 +39,33 @@
 
   <?php
 
-if(isset($_POST['too1']) && $_POST['too1'] != "" && 
-isset($_POST['too2']) && $_POST['too2'] != "" &&
-isset($_POST['uildel']) && $_POST['uildel'] != "")
+  function hoosonbish($field){
+    if($field != "")
+    {
+      return true;
+    }
+    return false;
+  }
+  
+  function calculate($too1,$too2,$uildel){
+    switch($uildel){
+      case "+":
+        return $_POST['too1'] + $_POST['too2'];
+      case "-":
+        return $_POST['too1'] - $_POST['too2'];
+      case "*":
+        return $_POST['too1'] * $_POST['too2'];
+      case "/":
+        return $_POST['too1'] / $_POST['too2'];
+      default:
+      return 'Aldaatai baina';
+     }
+  }
+
+if(hoosonbish($_POST['too1']) && hoosonbish($_POST['too2']) && hoosonbish($_POST['uildel']))
 {
-   $uildel = $_POST['uildel'];
-   switch($uildel){
-    case "+":
-      $hariu = $_POST['too1'] + $_POST['too2'];
-      break;
-    case "-":
-      $hariu = $_POST['too1'] - $_POST['too2'];
-      break;
-    case "*":
-      $hariu = $_POST['too1'] * $_POST['too2'];
-      break;
-    case "/":
-      $hariu = $_POST['too1'] / $_POST['too2'];
-      break;
-    default:
-      $hariu = 'Aldaatai baina';
-   }
+  $uildel = $_POST['uildel'];
+  $hariu = calculate($_POST['too1'],$_POST['too2'],$_POST['uildel']);
    echo $hariu;
    
 }
